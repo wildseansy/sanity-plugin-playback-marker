@@ -2,6 +2,9 @@
 
 For entering values in `mm:ss` format like `03:45`, and reflecting them in your sanity model as second numeric values. This input can be used to both reflect a time or a second length. The intention is to make it easier for CMS managers to input these values when referencing playback.
 
+
+For more info, [see this post](https://seansy.medium.com/sanity-io-the-time-seconds-field-e5f2db779bb3) on how to integrate with your sanity model
+
 ## Installation
 
 ```bash
@@ -16,7 +19,7 @@ Then you can use the `TimeToSecondsField` as an input component. Playback marker
 import TimeToSecondsField from 'sanity-plugin-time-seconds'
 
 {
-  name: "timeSeconds", //Give your sanity field a name
+  name: "adStartTime", //Give your sanity field a name
   description: "Time when ad starts", //Give it a description
   type: "number", //Must always be number
   inputComponent: TimeToSecondsField,
@@ -32,15 +35,16 @@ This is what the field looks like. On the right, the field's value is an int, re
 
 For fields in the schema like:
 ```javascript
+import TimeToSecondsField from 'sanity-plugin-time-seconds'
 {
   name: "adStartTime",
   title: "Ad Start Time",
   type: "number",
   inputComponent: TimeToSecondsField,
-  description: "Enter time when ad starts",
+  description: "Time in the podcast when ad should start",
   options: {
     placeholder: "Value in 00:00 format",
-  },
+  }
 },
 {
   name: "adPlaybackLength",
@@ -49,9 +53,9 @@ For fields in the schema like:
   inputComponent: TimeToSecondsField,
   description: "Enter Length of Ad",
   options: {
-    placeholder: "Value in 00:00 format",
-  },
-},
+    placeholder: "Ad Length, value in 00:00 format",
+  }
+}
 ```
 `TimeToSecondsField` represents it like:
 
